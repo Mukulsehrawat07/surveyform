@@ -6,17 +6,17 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
-  overflow: hidden;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-/* Container with 3D tilt effect */
+/* Container with hover 3D effect */
 .form-container {
   background: rgba(255, 255, 255, 0.95);
   padding: 40px;
@@ -24,18 +24,12 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   max-width: 700px;
   width: 100%;
-  transform-style: preserve-3d;
-  animation: floatCard 6s ease-in-out infinite;
+  transition: transform 0.5s ease;
+  will-change: transform;
 }
 
-/* Floating animation */
-@keyframes floatCard {
-  0%, 100% {
-    transform: rotateX(0deg) rotateY(0deg) translateY(0px);
-  }
-  50% {
-    transform: rotateX(3deg) rotateY(3deg) translateY(-10px);
-  }
+.form-container:hover {
+  transform: rotateX(2deg) rotateY(2deg);
 }
 
 /* Title and description */
