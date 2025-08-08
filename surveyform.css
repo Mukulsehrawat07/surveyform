@@ -1,49 +1,69 @@
-/* Reset some default styles */
-body, h1, p, label, input, select, textarea, button {
+/* Reset and base styles */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body styling */
 body {
-  background: #f4f6f8;
-  color: #333;
-  padding: 40px;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  overflow: hidden;
 }
 
-/* Form container */
-form {
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+/* Container with 3D tilt effect */
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
   width: 100%;
+  transform-style: preserve-3d;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes floatCard {
+  0%, 100% {
+    transform: rotateX(0deg) rotateY(0deg) translateY(0px);
+  }
+  50% {
+    transform: rotateX(3deg) rotateY(3deg) translateY(-10px);
+  }
 }
 
 /* Title and description */
 #title {
   text-align: center;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
   color: #2c3e50;
+  margin-bottom: 10px;
 }
 
 #description {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #555;
+  margin-bottom: 30px;
 }
 
-/* Labels and inputs */
+/* Form layout using grid */
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Label and input styling */
 label {
-  display: block;
-  margin: 15px 0 5px;
-  font-weight: 500;
+  font-weight: 600;
+  color: #333;
 }
 
 input[type="text"],
@@ -52,56 +72,57 @@ input[type="number"],
 select,
 textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: #3498db;
+  border-color: #007acc;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 122, 204, 0.3);
   outline: none;
 }
 
-/* Fieldsets */
+/* Fieldsets with flex layout */
 fieldset {
   border: none;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 legend {
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 5px;
 }
 
-/* Radio and checkbox labels */
-input[type="radio"],
-input[type="checkbox"] {
-  margin-right: 8px;
-}
-
+/* Radio and checkbox styling */
 label input[type="radio"],
 label input[type="checkbox"] {
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 /* Submit button */
 button[type="submit"] {
-  margin-top: 25px;
-  width: 100%;
-  padding: 12px;
-  background-color: #3498db;
+  padding: 14px;
+  background: linear-gradient(to right, #007acc, #005fa3);
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 122, 204, 0.4);
 }
